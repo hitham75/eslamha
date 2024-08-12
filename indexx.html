@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادة الدكتور اسلام حاتم اخصائي العلاج الطبيعي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0056b3;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(120, 57, 57, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #4a2d2d;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+<h1>حجز موعد في عيادة الدكتور اسلام حاتم</h1>
+<form id="bookingForm">
+    <label for="name">الاسم الكامل</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="phone">رقم الهاتف</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="date">تاريخ الحجز</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">وقت الحجز</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="message">أية ملاحظات إضافية</label>
+    <textarea id="message" name="message" rows="4"></textarea>
+
+    <button type="button" onclick="sendWhatsApp()">إرسال</button>
+</form>
+</div>
+
+<script>
+function sendWhatsApp() {
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var date = document.getElementById('date').value;
+    var time = document.getElementById('time').value;
+    var message = document.getElementById('message').value;
+
+    var whatsappMessage = `مرحبًا، أرغب في حجز موعد:
+    \nالاسم: ${name}
+    \nرقم الهاتف: ${phone}
+    \nتاريخ الحجز: ${date}
+    \nوقت الحجز: ${time}
+    \nملاحظات إضافية: ${message}`;
+
+    var encodedMessage = encodeURIComponent(whatsappMessage);
+    var whatsappURL = `https://wa.me/+201015914642?text=${encodedMessage}`;
+
+    window.open(whatsappURL, '_blank');
+}
+</script>
+</body>
+</html>
